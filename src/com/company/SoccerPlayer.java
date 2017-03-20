@@ -1,7 +1,7 @@
 package com.company;
 
 /**
- * Created by idejesus on 18/03/2017.
+ * Created by ian on 20/03/2017.
  */
 public class SoccerPlayer extends Player {
     public SoccerPlayer(String name) {

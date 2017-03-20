@@ -1,18 +1,16 @@
 package com.company;
 
 /**
- * Created by idejesus on 18/03/2017.
+ * Created by ian on 20/03/2017.
  */
-public abstract class Player {
-    private String mName;
-
+public class Player {
+    String name;
 
     public Player(String name) {
-
-        mName = name;
+        this.name = name;
     }
 
     public String getName() {
-        return mName;
+        return name;
     }
 }
