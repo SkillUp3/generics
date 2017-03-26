@@ -19,11 +19,11 @@ public class Team<T extends Player> implements Comparable<Team<T>> {
     private ArrayList<T> members = new ArrayList<>();
 
     public Team(String name) {
-        this.name = name;
+        mName = name;
     }
 
     public String getName() {
-        return name;
+        return mName;
     }
 
     public boolean addPlayer(T player) {
@@ -34,38 +34,58 @@ public class Team<T extends Player> implements Comparable<Team<T>> {
             return false;
         } else {
             members.add(player);
-            System.out.println(player.getName() + " picked for team " + this.name);
+            System.out.println(player.getName() + " picked for team " + mName);
             return true;
         }
     }
 
+    public void matchResults(Team<T> opponent, int ourScore, int theirScore) {
 
+        String message;
+
+        if(ourScore > theirScore) {
+            mWon++;
+            message = " beat ";
+        } else if(ourScore == theirScore) {
+            mTied++;
+            message = " drew with ";
+
+        } else {
+            mLost++;
+            message = " lost to ";
+        }
+        mPlayed++;
+        if(opponent != null) {
+            System.out.println(this.getName() + message + opponent.getName());
+            opponent.matchResult(null, theirScore, ourScore);
+        }
+    }
 
     public int numPlayers() {
         return members.size();
     }
 
 
-
-
-
-
     @Override
     public int compareTo(Team<T> team) {
-        if(this.ranking() > team.ranking()){
+        if (this.ranking() > team.ranking()) {
             return -1;
-        }else if(this.ranking() < team.ranking()){
+        } else if (this.ranking() < team.ranking()) {
             return 1;
-        }else {
+        } else {
             return 0;
         }
+    }
 
     public int ranking() {
         return mWon * 2 + mTied;
+    }
 
-
-    //display the ranking
-    //criteria 1 : comparison should be acrosss the same kind teams e.g soccerteam manila, soccerteam japan,
-    //criteria 2: display the ranking in descending order i.e. top 1 stays on top of the list
 }
+
+
+//display the ranking
+//criteria 1 : comparison should be acrosss the same kind teams e.g soccerteam manila, soccerteam japan,
+//criteria 2: display the ranking in descending order i.e. top 1 stays on top of the list
+
 
