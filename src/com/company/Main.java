@@ -7,6 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+
         BaseballPlayer ian = new BaseballPlayer("ian");
         FootballPlayer rap = new FootballPlayer("Rap");
         SoccerPlayer ej = new SoccerPlayer("ek");
@@ -15,28 +16,50 @@ public class Main {
         manila.addPlayer(rap);
         manila.addPlayer(ej);
 
-        Team<FootballPlayer> manilaFootball = new Team("manila football");
-        manilaFootball.addPlayer(rap);
-//        manilaFootball.addPlayer(ian);
 
-        Team<BaseballPlayer> manilaBaseball = new Team ("manila baseball");
-        manilaBaseball.addPlayer(ian);
+        League<Team<FootballPlayer>> NFL= new League<>("NFL");
+        Team<FootballPlayer> philippinesFootball = new Team<>(" philippinesFootball");
+        Team<FootballPlayer> americanFootball = new Team<>(" americanFootball");
+        Team<FootballPlayer> japanFootball = new Team<>(" japanFootball");
+        Team<FootballPlayer> brazilFootball = new Team<>(" brazilFootball");
 
-        Team<BaseballPlayer> japanBaseball = new Team("japan baseball");
-        Team<BaseballPlayer> koreaBaseball = new Team("korea baseball");
-        Team<BaseballPlayer> usBaseball = new Team("us baseball");
+        NFL.add(philippinesFootball);
+        NFL.add(americanFootball);
+        NFL.add(japanFootball);
+        NFL.add(brazilFootball);
 
-        Team<SoccerPlayer> manilaSoccer = new Team("manila Soccer");
-        manilaSoccer.addPlayer(ej);
+        philippinesFootball.matchResults(americanFootball, 10, 5);
+        philippinesFootball.matchResults(japanFootball, 10, 5);
+        philippinesFootball.matchResults(brazilFootball, 10,5);
+        americanFootball.matchResults(brazilFootball, 10, 5);
+        americanFootball.matchResults(japanFootball, 10, 5);
+        brazilFootball.matchResults(japanFootball, 10, 5);
+
+        NFL.showLeagueTable();
+
+//        philippinesFootball.addPlayer(ian);
+
+
+//        philippinesBaseball.addPlayer(rap);
+//
+//        Team<SoccerPlayer> philipinesSoccer = new Team<>("Soccer");
+//        philipinesSoccer.addPlayer(ej);
+
+//        Team<String> thisiswerid = new Team("weird");
+//        thisiswerid.addPlayer("eskaka");
+
+//        philippinesFootball.matchResults(philipinesSoccer, 1,0);
+//        philippinesFootball.matchResults(philippinesBaseball, 2,5);
+//        System.out.println("Won " + philippinesFootball.getWon());
+//        System.out.println("Lost " + philippinesFootball.getLost());
+
 
         Team<SoccerPlayer> japanSoccer = new Team("japan baseball");
 
-        manilaBaseball.matchResult(japanBaseball, 3,0);
-        manilaBaseball.matchResult(usBaseball, 5, 2);
-        koreaBaseball.matchResult(usBaseball, 1,5);
-        japanBaseball.matchResult(koreaBaseball, 5,4);
+
 
 
     }
+
 
 }
